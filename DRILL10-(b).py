@@ -71,7 +71,14 @@ class Ball:
             self.y += self.speed
 
             if self.y > self.ground_y:
-                self.y = self.ground_y
+                self.y = self.ground_y - 10
+                
+
+        
+                
+    
+
+            
 
     def draw(self):
         self.image.draw(self.x, self.y)

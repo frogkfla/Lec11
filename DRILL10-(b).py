@@ -63,6 +63,11 @@ class Ball:
 
         self.speed = random.uniform(3,0 , 8.0)
 
+        self.ground_y = 90 + self.size 
+
+
+    def draw(self):
+        self.image.draw(self.x, self.y)
 
 
 def reset_world():
@@ -79,6 +84,9 @@ def reset_world():
 
     team = [Boy() for _ in range(11)]
     world += team
+
+    balls = [Ball() for _ in range(20)]
+    world += balls
 
 
 def update_world():

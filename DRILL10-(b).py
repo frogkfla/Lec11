@@ -46,12 +46,12 @@ class Zombie:
         self.image.clip_draw(
             self.frame * frame_width, 0, frame_width, frame_height,
             self.x, self.y, frame_width // 2, frame_height // 2
-            )
-        
+        )
+
 
 class Ball:
     def __init__(self):
-        self.size = random.choice([21,41])
+        self.size = random.choice([21, 41])
 
         if self.size == 21:
             self.image = load_image('ball21x21.png')
@@ -61,10 +61,17 @@ class Ball:
         self.x = random.randint(100, 700)
         self.y = 90
 
-        self.speed = random.uniform(3,0 , 8.0)
+        self.speed = random.uniform(2.0, 8.0)
 
-        self.ground_y = 90 + self.size 
+        self.ground_y = 600 - self.size / 2
 
+
+    def update(self):
+        if self.y < self.ground_y:
+            self.y += self.speed
+
+            if self.y > self.ground_y:
+                self.y = self.ground_y
 
     def draw(self):
         self.image.draw(self.x, self.y)
@@ -96,8 +103,10 @@ def update_world():
 
 def render_world():
     clear_canvas()
+
     for obj in world:
         obj.draw()
+
     update_canvas()
 
 
@@ -105,6 +114,7 @@ def handle_events():
     global running
 
     events = get_events()
+
     for event in events:
         if event.type == SDL_QUIT:
             running = False

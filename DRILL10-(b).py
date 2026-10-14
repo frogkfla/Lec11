@@ -58,7 +58,11 @@ class Ball:
         else:
             self.image = load_image('ball41x41.png')
 
-        
+        self.x = random.randint(100, 700)
+        self.y = 90
+
+        self.speed = random.uniform(3,0 , 8.0)
+
 
 
 def reset_world():

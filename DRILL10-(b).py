@@ -29,6 +29,7 @@ class Boy:
             self.x, self.y
         )
 
+
 class Zombie:
     def __init__(self):
         self.x, self.y = 100, 170
@@ -46,6 +47,17 @@ class Zombie:
             self.frame * frame_width, 0, frame_width, frame_height,
             self.x, self.y, frame_width // 2, frame_height // 2
             )
+        
+
+class Ball:
+    def __init__(self):
+        self.size = random.choice([21,41])
+
+        if self.size == 21:
+            self.image = load_image('ball21x21.png')
+        else:
+            self.image = load_image('ball41x41.png')
+
         
 
 
